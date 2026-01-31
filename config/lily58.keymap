@@ -10,6 +10,26 @@
 #include <dt-bindings/zmk/ext_power.h>
 
 / {
+    behaviors {
+        // This makes "Sticky Key" discoverable
+        sk_studio: sticky_key {
+            compatible = "zmk,behavior-sticky-key";
+            #binding-cells = <1>;
+            release-after-ms = <2000>;
+            bindings = <&kp>;
+        };
+
+        // This makes "Layer Tap" discoverable
+        lt_studio: layer_tap {
+            compatible = "zmk,behavior-layer-tap";
+            #binding-cells = <2>;
+            flavor = "tap-preferred";
+            bindings = <&mo>, <&kp>;
+        };
+    };
+};
+
+/ {
     keymap {
         compatible = "zmk,keymap";
 
